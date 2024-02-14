@@ -5,7 +5,7 @@ import ToggleTheme, { ColorMode } from "../components/ToggleTheme";
 import { usePreferredDark } from "../my-hooks/usePreferredDark"
 import { useDark } from "../my-hooks/useDark";
 
-// 定义 key 常量
+// 定义key常量
 const PRIMARY_COLOR_KEY = "app_primary_color";
 const COLOR_MODE_KEY = "app_color_mode";
 
