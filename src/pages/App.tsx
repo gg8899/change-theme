@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useLocalStorageState } from 'ahooks'
 import { Button, ColorPicker, ConfigProvider, ThemeConfig, theme } from 'antd'
-import ToggleTheme, { ColorMode } from "./ToggleTheme";
-import { usePreferredDark } from "./usePreferredDark"
-import { useDark } from "./useDark";
+import ToggleTheme, { ColorMode } from "../components/ToggleTheme";
+import { usePreferredDark } from "../my-hooks/usePreferredDark"
+import { useDark } from "../my-hooks/useDark";
 
 // 定义 key 常量
 const PRIMARY_COLOR_KEY = "app_primary_color";
@@ -11,7 +11,6 @@ const COLOR_MODE_KEY = "app_color_mode";
 
 function App() {
   const preferreDark = usePreferredDark()
-  // const [primaryColor, setPrimaryColor] = useState("#7575b6");
   const [primaryColor, setPrimaryColor] = useLocalStorageState(
     PRIMARY_COLOR_KEY,
     {
@@ -20,9 +19,8 @@ function App() {
       deserializer: (v) => v,
     }
   );
-  // const [mode, setMode] = useState<ColorMode>("auto");
   const [mode, setMode] = useLocalStorageState<ColorMode>(COLOR_MODE_KEY, {
-    defaultValue: "auto",
+    defaultValue: "light",
     serializer: (v) => v,
     deserializer: (v) => v as ColorMode,
   });
@@ -60,9 +58,8 @@ function App() {
           />
 
           <span className="p-2 text-primary border border-primary">{primaryColor}</span>
-
-          <Button type="primary">123</Button>
-          <Button>zzz</Button>
+          <Button type="primary">主题颜色</Button>
+          <Button>主题</Button>
 
           <ToggleTheme mode={mode!} onChange={(m) => setMode(m)} />
         </div>
