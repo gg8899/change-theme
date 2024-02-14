@@ -20,7 +20,7 @@ jobs:
           npm install
           npm run build
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: JamesIves/github-pages-deploy-action@4.1.3
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          publish_dir: ./dist
+          FOLDER: ./dist
